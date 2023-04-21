@@ -37,3 +37,8 @@ def get_movies():
 def get_movie(id: int):
     movie = list(filter(lambda x: x['id'] == id, movies))
     return movie if len(movie) > 0 else "No hay nada que ver"
+
+@app.get('/movies/', tags = ['movies'])
+def get_movies_by_category(category: str):
+    res = list(filter(lambda x: x['category'] == category, movies))
+    return res if len(res) > 0 else "No hay nada que ver"
